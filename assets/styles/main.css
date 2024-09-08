@@ -1,0 +1,20 @@
+
+:root {
+  --primary-color: #d0d0d0;
+  --text-color: rgb(84, 84, 84);
+  --bg-color: #e7e7e7;
+  --button-color: rgb(141, 141, 141);
+  --box-shadow: 0px 1px 5px -1px rgba(124, 124, 174, 1);
+  --errors-color: rgb(246, 22, 22);
+}
+
+body {
+  background-color: #ffffff;
+  color: var(--text-color);
+}
+
+*{  
+    margin: 0;
+    box-sizing: border-box;
+}
+
