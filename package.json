@@ -11,13 +11,16 @@
   },
   "dependencies": {
     "@primevue/themes": "^4.0.5",
+    "axios": "^1.7.7",
     "nuxt": "^3.13.0",
     "primevue": "^4.0.5",
     "vee-validate": "^4.13.2",
     "vue": "latest",
+    "vue-router": "^4.4.5",
     "yup": "^1.4.0"
   },
   "devDependencies": {
-    "@primevue/nuxt-module": "^4.0.5"
+    "@primevue/nuxt-module": "^4.0.5",
+    "@types/vue": "^1.0.31"
   }
 }

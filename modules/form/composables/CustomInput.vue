@@ -14,14 +14,7 @@
      <span v-if="error">{{ error }}</span>
     </div>
 
-    <!-- <div>
-        <input :type="type" :value="modelValue"
-            @input="$emit('update:modelValue', ($event.target as HTMLInputElement)?.value.trim() ?? '')"
-            @blur="$emit('blur')" :class="['formInput', { 'backGroundError': error }]" name="departmentName" />
-
-        <span v-if="error">{{ error }}</span>
-    </div> -->
-
+ 
 </template>
 
 <script lang="ts" setup>

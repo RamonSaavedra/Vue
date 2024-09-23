@@ -1,13 +1,5 @@
 <template>
     <div>
-        <!-- <textarea
-        :type="type"
-        :value="modelValue"
-        @input="$emit('update:modelValue' , ($event.target as HTMLTextAreaElement)?.value.trim() ?? '')"
-        @blur="$emit('blur')"
-        :class="['formTextArea', {'backGroundError' : error }]" 
-
-        /> -->
 
         <FloatLabel>
             <Textarea 

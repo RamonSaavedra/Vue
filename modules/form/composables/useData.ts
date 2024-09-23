@@ -1,6 +1,15 @@
+import { ref } from "vue";
 import "@/modules/config/yup";
 import * as yup from "yup";
 import { useForm, useIsFormValid } from "vee-validate";
+
+import useApi from "../../api/useApi";
+
+
+
+const createdTodoData = ref<any>(null);
+
+const { createTodo } = useApi();
 
 export const useData = () => {
   const schema = yup.object().shape({
@@ -13,7 +22,7 @@ export const useData = () => {
     employeesExtension: yup.number().required().min(3),
   });
 
-  const { handleSubmit, defineField, errors } = useForm({
+  const { handleSubmit, defineField, errors, meta, resetForm } = useForm({
     validationSchema: schema,
   });
 
@@ -34,18 +43,42 @@ export const useData = () => {
 
   const isValid = useIsFormValid();
 
-  const submit = handleSubmit((values) => {
-    console.log(values);
+  const submit = handleSubmit(async (values) => {
+    const todo = {
+      departmentName: values.departmentName,
+      departmentHead: values.departmentHead,
+      departmentDescription: values.departmentDescription,
+      employeesName: values.employeesName,
+      employeesLastName: values.employeesLastName,
+      employeesDepartment: values.employeesDepartment,
+      employeesExtension: values.employeesExtension,
+      isComplete: false,
+    };
+
+    try {
+      const createdTodo = await createTodo(todo);
+      console.log("Todo created:", createdTodo);
+
+      createdTodoData.value = createdTodo;
+
+    
+
+      resetForm({
+        values: {},
+      });
+    } catch (error) {
+      console.error("Error al enviar el formulario:", error);
+    }
   });
 
   return {
+    meta,
     departmentName,
     departmentNameAttrs,
     departmentHead,
     departmentHeadAttrs,
     departmentDescription,
     departmentDescriptionAttrs,
-
     employeesName,
     employeesNameAttrs,
     employeesLastName,
@@ -54,11 +87,10 @@ export const useData = () => {
     employeesDepartmentAttrs,
     employeesExtension,
     employeesExtensionAttrs,
-
     isValid,
-
     errors,
-
     submit,
+
+    createdTodoData,
   };
 };
